@@ -45,13 +45,9 @@ app.get('/', function homepage(req, res) {
 
 app.get('/api/todos/search', function search(req, res) {
   var query = req.query.q;
-  console.log(query);
-  var searchData = [];
-  for(var i = 0; i < todos.length; i++){
-    if(todos[i].task === query){
-      searchData.push(todos[i]);
-    }
-  }
+  var searchData = todos.filter(function(item){
+    return((item.task.indexOf(query) != -1) || (item.description.indexOf(query) != -1));
+  });
   res.json({todos: searchData});
 });
 
