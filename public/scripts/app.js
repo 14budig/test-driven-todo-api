@@ -1,6 +1,5 @@
 // wait for DOM to load before running JS
 $(document).ready(function() {
-
   // base API route
   var baseUrl = '/api/todos';
 
