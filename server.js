@@ -46,7 +46,7 @@ app.get('/', function homepage(req, res) {
 app.get('/api/todos/search', function search(req, res) {
   var query = req.query.q;
   console.log(query);
-  var searchData = []
+  var searchData = [];
   for(var i = 0; i < todos.length; i++){
     if(todos[i].task === query){
       searchData.push(todos[i]);
