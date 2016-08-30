@@ -48,7 +48,7 @@ app.get('/api/todos/search', function search(req, res) {
   console.log(query);
   var searchData = []
   for(var i = 0; i < todos.length; i++){
-    if(todos[i].task == query){
+    if(todos[i].task === query){
       searchData.push(todos[i]);
     }
   }
@@ -67,19 +67,18 @@ app.post('/api/todos', function create(req, res) {
 });
 
 app.get('/api/todos/:id', function show(req, res) {
-  var id = req.params.id;
+  var id = parseInt(req.params.id);
   var output = todos.find(function(item){
-    return item._id == id;
+    return item._id === id;
   });
   res.json(output);
 });
 
 
 app.put('/api/todos/:id', function update(req, res) {
-  var id = req.params.id;
-  console.log(id);
+  var id = parseInt(req.params.id);
   var index = todos.findIndex(function(item){
-    return item._id == id;
+    return item._id === id;
   });
   var item = todos[index];
   item.task = req.body.task;
@@ -88,9 +87,9 @@ app.put('/api/todos/:id', function update(req, res) {
 });
 
 app.delete('/api/todos/:id', function destroy(req, res) {
-  var id = req.params.id;
+  var id = parseInt(req.params.id);
   var index = todos.findIndex(function(item){
-    return item._id == id;
+    return item._id === id;
   });
   todos.splice(index, 1);
    res.json({});
