@@ -49,7 +49,7 @@ app.get('/search', function homepage(req, res) {
 app.get('/api/todos/search', function search(req, res) {
   var query = req.query.q;
   var searchData = todos.filter(function(item){
-    return((item.task.indexOf(query) != -1) || (item.description.indexOf(query) != -1));
+    return((item.task.toLowerCase().indexOf(query.toLowerCase()) != -1) || (item.description.toLowerCase().indexOf(query.toLowerCase()) != -1));
   });
   res.json({todos: searchData});
 });
